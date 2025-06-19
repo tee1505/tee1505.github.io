@@ -10,30 +10,65 @@
       margin: 0;
       padding: 0;
       font-family: 'Kanit', sans-serif;
-      overflow: hidden;
       height: 100%;
+      overflow: hidden;
+      background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
     }
 
-    body {
-      background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364);
-      background-size: 400% 400%;
-      animation: gradientBG 20s ease infinite;
-      color: white;
+    /* Bubbles background */
+    .bubbles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
     }
 
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    .bubble {
+      position: absolute;
+      bottom: -100px;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      animation: rise 15s infinite ease-in;
     }
 
+    /* Generate random bubble variations */
+    .bubble:nth-child(1) { left: 10%; width: 20px; height: 20px; animation-duration: 12s; }
+    .bubble:nth-child(2) { left: 20%; width: 25px; height: 25px; animation-duration: 10s; }
+    .bubble:nth-child(3) { left: 30%; width: 10px; height: 10px; animation-duration: 16s; }
+    .bubble:nth-child(4) { left: 40%; width: 30px; height: 30px; animation-duration: 14s; }
+    .bubble:nth-child(5) { left: 50%; width: 20px; height: 20px; animation-duration: 13s; }
+    .bubble:nth-child(6) { left: 60%; width: 15px; height: 15px; animation-duration: 18s; }
+    .bubble:nth-child(7) { left: 70%; width: 25px; height: 25px; animation-duration: 11s; }
+    .bubble:nth-child(8) { left: 80%; width: 18px; height: 18px; animation-duration: 17s; }
+    .bubble:nth-child(9) { left: 90%; width: 22px; height: 22px; animation-duration: 12s; }
+    .bubble:nth-child(10) { left: 95%; width: 28px; height: 28px; animation-duration: 15s; }
+
+    @keyframes rise {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.7;
+      }
+      50% {
+        transform: translateY(-300px) scale(1.2);
+        opacity: 0.4;
+      }
+      100% {
+        transform: translateY(-600px) scale(1);
+        opacity: 0;
+      }
+    }
+
+    /* Main content */
     .overlay {
-      background-color: rgba(0, 0, 0, 0.4);
+      position: relative;
+      z-index: 1;
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      position: relative;
       padding: 30px;
     }
 
@@ -45,6 +80,7 @@
       border-radius: 15px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
       text-align: center;
+      color: white;
       animation: float 6s ease-in-out infinite;
     }
 
@@ -61,7 +97,7 @@
       object-fit: cover;
       margin-bottom: 20px;
       border: 3px solid #00ffff;
-      animation: rotateImage 10s linear infinite;
+      animation: rotateImage 20s linear infinite;
     }
 
     p {
@@ -70,25 +106,40 @@
       color: #fff;
     }
 
-    /* Animations */
+    /* Additional animations */
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
-    }
-
-    @keyframes rotateImage {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
     }
 
     @keyframes glowText {
       from { text-shadow: 0 0 10px #00ffff; }
       to { text-shadow: 0 0 20px #00ffff, 0 0 30px #00ffff; }
     }
+
+    @keyframes rotateImage {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
   </style>
 </head>
 <body>
 
+  <!-- Floating bubbles -->
+  <div class="bubbles">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+  </div>
+
+  <!-- Main profile content -->
   <div class="overlay">
     <div class="container">
       <h1>สวัสดีครับ! ผมชื่อ TEE1505</h1>
