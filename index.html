@@ -6,26 +6,35 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
 
-    body {
-      font-family: 'Kanit', sans-serif;
+    html, body {
       margin: 0;
       padding: 0;
-      background-image: url('020121_0303_61.jpg'); /* ใส่ชื่อไฟล์พื้นหลังของคุณให้ตรง */
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      color: white;
+      font-family: 'Kanit', sans-serif;
       overflow: hidden;
+      height: 100%;
+    }
+
+    body {
+      background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364);
+      background-size: 400% 400%;
+      animation: gradientBG 20s ease infinite;
+      color: white;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .overlay {
-      background-color: rgba(0, 0, 0, 0.6);
-      min-height: 100vh;
+      background-color: rgba(0, 0, 0, 0.4);
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
+      position: relative;
       padding: 30px;
-      animation: fadeIn 2s ease-in-out;
     }
 
     .container {
@@ -36,17 +45,13 @@
       border-radius: 15px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
       text-align: center;
-      transform: translateY(30px);
-      animation: slideUp 1.5s ease forwards;
-      animation-delay: 1s;
+      animation: float 6s ease-in-out infinite;
     }
 
     h1 {
       color: #00ffff;
       margin-bottom: 20px;
-      opacity: 0;
-      animation: fadeIn 1s ease forwards;
-      animation-delay: 1.8s;
+      animation: glowText 2s ease-in-out infinite alternate;
     }
 
     img {
@@ -56,38 +61,29 @@
       object-fit: cover;
       margin-bottom: 20px;
       border: 3px solid #00ffff;
-      animation: spinIn 1.2s ease forwards;
+      animation: rotateImage 10s linear infinite;
     }
 
     p {
       font-size: 1.2em;
       line-height: 1.6;
       color: #fff;
-      opacity: 0;
-      animation: fadeIn 1s ease forwards;
-      animation-delay: 2.2s;
     }
 
-    /* Animation Keyframes */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    /* Animations */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
 
-    @keyframes slideUp {
-      from { transform: translateY(30px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
+    @keyframes rotateImage {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
 
-    @keyframes spinIn {
-      from {
-        transform: rotate(-180deg) scale(0.5);
-        opacity: 0;
-      }
-      to {
-        transform: rotate(0deg) scale(1);
-        opacity: 1;
-      }
+    @keyframes glowText {
+      from { text-shadow: 0 0 10px #00ffff; }
+      to { text-shadow: 0 0 20px #00ffff, 0 0 30px #00ffff; }
     }
   </style>
 </head>
