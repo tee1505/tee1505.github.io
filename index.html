@@ -10,11 +10,12 @@
       font-family: 'Kanit', sans-serif;
       margin: 0;
       padding: 0;
-      background-image: url('020121_0303_61.jpg');
+      background-image: url('020121_0303_61.jpg'); /* ใส่ชื่อไฟล์พื้นหลังของคุณให้ตรง */
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
       color: white;
+      overflow: hidden;
     }
 
     .overlay {
@@ -24,6 +25,7 @@
       justify-content: center;
       align-items: center;
       padding: 30px;
+      animation: fadeIn 2s ease-in-out;
     }
 
     .container {
@@ -34,11 +36,17 @@
       border-radius: 15px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
       text-align: center;
+      transform: translateY(30px);
+      animation: slideUp 1.5s ease forwards;
+      animation-delay: 1s;
     }
 
     h1 {
       color: #00ffff;
       margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+      animation-delay: 1.8s;
     }
 
     img {
@@ -48,12 +56,38 @@
       object-fit: cover;
       margin-bottom: 20px;
       border: 3px solid #00ffff;
+      animation: spinIn 1.2s ease forwards;
     }
 
     p {
       font-size: 1.2em;
       line-height: 1.6;
       color: #fff;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+      animation-delay: 2.2s;
+    }
+
+    /* Animation Keyframes */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes spinIn {
+      from {
+        transform: rotate(-180deg) scale(0.5);
+        opacity: 0;
+      }
+      to {
+        transform: rotate(0deg) scale(1);
+        opacity: 1;
+      }
     }
   </style>
 </head>
