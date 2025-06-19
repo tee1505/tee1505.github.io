@@ -4,50 +4,72 @@
   <meta charset="UTF-8">
   <title>แนะนำตัวเอง</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+
     body {
       font-family: 'Kanit', sans-serif;
-      background-color: #f2f2f2;
       margin: 0;
       padding: 0;
+      background-image: url('https://images.unsplash.com/photo-1534759846116-5790ce1f1b42?auto=format&fit=crop&w=1470&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: white;
     }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.6);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+    }
+
     .container {
       max-width: 700px;
-      margin: 50px auto;
-      background: white;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
       padding: 30px;
       border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-    h1 {
-      color: #007acc;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
       text-align: center;
     }
+
+    h1 {
+      color: #00ffff;
+      margin-bottom: 20px;
+    }
+
     img {
-      display: block;
-      margin: 20px auto;
       border-radius: 50%;
       width: 150px;
       height: 150px;
       object-fit: cover;
+      margin-bottom: 20px;
+      border: 3px solid #00ffff;
     }
+
     p {
       font-size: 1.2em;
-      line-height: 1.6em;
-      color: #333;
+      line-height: 1.6;
+      color: #fff;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <h1>สวัสดีครับ! ผมชื่อ Tee1505 </h1>
-    <img src="507619686_23877486701893389_8403894263730468808_n.jpg" alt="รูปโปรไฟล์">
-    <p>
-      ผมเป็นคนที่สนใจในด้านเทคโนโลยี การเขียนโปรแกรม และการพัฒนาเว็บไซต์<br>
-      เวลาว่างผมชอบอ่านหนังสือ ออกกำลังกาย และเรียนรู้สิ่งใหม่ ๆ<br><br>
-      ความสามารถของผมรวมถึง HTML, CSS, JavaScript และการออกแบบ UX/UI<br>
-      เป้าหมายของผมคือการพัฒนาเว็บไซต์ที่ทั้งสวยงามและใช้งานง่ายครับ
-    </p>
+  <div class="overlay">
+    <div class="container">
+      <h1>สวัสดีครับ! ผมชื่อ TEE1505</h1>
+      <img src="507619686_23877486701893389_8403894263730468808_n.jpg" alt="รูปโปรไฟล์">
+      <p>
+        ผมเป็นคนที่สนใจในด้านเทคโนโลยี การเขียนโปรแกรม และการพัฒนาเว็บไซต์<br>
+        เวลาว่างผมชอบอ่านหนังสือ ฟังเพลง และเรียนรู้สิ่งใหม่ ๆ<br><br>
+        ความสามารถของผมรวมถึง HTML, CSS, JavaScript และการออกแบบ UX/UI<br>
+        เป้าหมายของผมคือการพัฒนาเว็บไซต์ที่ทั้งสวยงามและใช้งานง่ายครับ
+      </p>
+    </div>
   </div>
 
 </body>
