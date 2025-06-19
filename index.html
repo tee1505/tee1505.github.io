@@ -15,53 +15,51 @@
       background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
     }
 
-    /* Bubbles background */
-    .bubbles {
+    /* Music notes floating */
+    .notes {
       position: absolute;
       width: 100%;
       height: 100%;
       z-index: 0;
       overflow: hidden;
+      pointer-events: none;
     }
 
-    .bubble {
+    .note {
       position: absolute;
-      bottom: -100px;
-      width: 40px;
-      height: 40px;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 50%;
-      animation: rise 15s infinite ease-in;
+      bottom: -50px;
+      font-size: 24px;
+      opacity: 0.8;
+      animation: riseNote 12s infinite ease-in;
     }
 
-    /* Generate random bubble variations */
-    .bubble:nth-child(1) { left: 10%; width: 20px; height: 20px; animation-duration: 12s; }
-    .bubble:nth-child(2) { left: 20%; width: 25px; height: 25px; animation-duration: 10s; }
-    .bubble:nth-child(3) { left: 30%; width: 10px; height: 10px; animation-duration: 16s; }
-    .bubble:nth-child(4) { left: 40%; width: 30px; height: 30px; animation-duration: 14s; }
-    .bubble:nth-child(5) { left: 50%; width: 20px; height: 20px; animation-duration: 13s; }
-    .bubble:nth-child(6) { left: 60%; width: 15px; height: 15px; animation-duration: 18s; }
-    .bubble:nth-child(7) { left: 70%; width: 25px; height: 25px; animation-duration: 11s; }
-    .bubble:nth-child(8) { left: 80%; width: 18px; height: 18px; animation-duration: 17s; }
-    .bubble:nth-child(9) { left: 90%; width: 22px; height: 22px; animation-duration: 12s; }
-    .bubble:nth-child(10) { left: 95%; width: 28px; height: 28px; animation-duration: 15s; }
+    .note:nth-child(1) { left: 5%; color: #ff69b4; animation-delay: 0s; font-size: 28px; }
+    .note:nth-child(2) { left: 15%; color: #00ffff; animation-delay: 1s; font-size: 24px; }
+    .note:nth-child(3) { left: 25%; color: #ffcc00; animation-delay: 2s; font-size: 30px; }
+    .note:nth-child(4) { left: 35%; color: #00ff7f; animation-delay: 3s; font-size: 22px; }
+    .note:nth-child(5) { left: 45%; color: #ffa07a; animation-delay: 4s; font-size: 26px; }
+    .note:nth-child(6) { left: 55%; color: #7b68ee; animation-delay: 5s; font-size: 20px; }
+    .note:nth-child(7) { left: 65%; color: #ff4500; animation-delay: 6s; font-size: 32px; }
+    .note:nth-child(8) { left: 75%; color: #00ced1; animation-delay: 7s; font-size: 24px; }
+    .note:nth-child(9) { left: 85%; color: #ffd700; animation-delay: 8s; font-size: 28px; }
+    .note:nth-child(10){ left: 95%; color: #adff2f; animation-delay: 9s; font-size: 22px; }
 
-    @keyframes rise {
+    @keyframes riseNote {
       0% {
-        transform: translateY(0) scale(1);
-        opacity: 0.7;
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.8;
       }
       50% {
-        transform: translateY(-300px) scale(1.2);
-        opacity: 0.4;
+        transform: translateY(-300px) rotate(20deg);
+        opacity: 0.5;
       }
       100% {
-        transform: translateY(-600px) scale(1);
+        transform: translateY(-600px) rotate(-20deg);
         opacity: 0;
       }
     }
 
-    /* Main content */
+    /* Main overlay */
     .overlay {
       position: relative;
       z-index: 1;
@@ -106,7 +104,6 @@
       color: #fff;
     }
 
-    /* Additional animations */
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
@@ -125,21 +122,21 @@
 </head>
 <body>
 
-  <!-- Floating bubbles -->
-  <div class="bubbles">
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
+  <!-- Floating music notes -->
+  <div class="notes">
+    <div class="note">🎵</div>
+    <div class="note">🎶</div>
+    <div class="note">🎵</div>
+    <div class="note">🎶</div>
+    <div class="note">🎵</div>
+    <div class="note">🎶</div>
+    <div class="note">🎵</div>
+    <div class="note">🎶</div>
+    <div class="note">🎵</div>
+    <div class="note">🎶</div>
   </div>
 
-  <!-- Main profile content -->
+  <!-- Profile content -->
   <div class="overlay">
     <div class="container">
       <h1>สวัสดีครับ! ผมชื่อ TEE1505</h1>
