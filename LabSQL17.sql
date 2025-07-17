@@ -78,3 +78,28 @@ where CompanyName LIKE '%Y'
 
 SELECT firstname, lastname from Employees
 where FirstName like '%an%'
+
+SELECT *
+from Employees
+where FirstName like '_____'
+
+SELECT CompanyName
+from Customers
+where CompanyName LIKE '_A%'
+
+SELECT ProductID,ProductName,UnitPrice
+FROM Products
+ORDER BY UnitPrice 
+
+SELECT CompanyName, ContactName
+FROM Customers
+ORDER BY ContactName ASC
+
+--ต้องการชื่อ ราคา สินค้า จำนวนคงเหลือ ที่มีจำนวนคงเหลือสูงที่สุด 10 อันดับแรก
+SELECT productName,UnitPrice
+from Products
+order by UnitsInStock DESC
+
+SELECT CategoryID,ProductName,UnitPrice
+from Products
+order by CategoryID ASC,UnitPrice DESC
