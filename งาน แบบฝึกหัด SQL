@@ -25,9 +25,10 @@ WHERE (CategoryID = 1 AND UnitPrice <= 20)
 
 SELECT CompanyName
 FROM Customers
-WHERE fax is NULL
+WHERE Country = 'USA' and fax is NULL
 order by CompanyName
 
 Select*
 from Customers
 where CompanyName like '%Com%';
+
