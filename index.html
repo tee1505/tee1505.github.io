@@ -1,144 +1,490 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <title>แนะนำตัวเอง</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>นักศึกษา - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Kanit', sans-serif;
-      height: 100%;
-      overflow: hidden;
-      background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
-    }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            color: #2c2c2c;
+            line-height: 1.6;
+        }
 
-    /* ฟองน้ำลอย */
-    .bubbles {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-    .bubble {
-      position: absolute;
-      bottom: -150px;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 50%;
-      animation: rise 20s infinite ease-in;
-    }
+        header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #3a3a3a 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border-bottom: 4px solid #fff;
+        }
 
-    /* ฟองน้ำขนาดใหญ่ */
-    .bubble:nth-child(1) { width: 100px; height: 100px; left: 10%; animation-delay: 0s; }
-    .bubble:nth-child(2) { width: 120px; height: 120px; left: 25%; animation-delay: 5s; }
-    .bubble:nth-child(3) { width: 90px; height: 90px; left: 40%; animation-delay: 2s; }
-    .bubble:nth-child(4) { width: 130px; height: 130px; left: 60%; animation-delay: 4s; }
-    .bubble:nth-child(5) { width: 110px; height: 110px; left: 80%; animation-delay: 1s; }
+        .profile-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
 
-    @keyframes rise {
-      0% {
-        transform: translateY(0) scale(1);
-        opacity: 0.6;
-      }
-      50% {
-        transform: translateY(-300px) scale(1.1);
-        opacity: 0.4;
-      }
-      100% {
-        transform: translateY(-1000px) scale(1.2);
-        opacity: 0;
-      }
-    }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
 
-    .overlay {
-      position: relative;
-      z-index: 1;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 30px;
-    }
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
 
-    .container {
-      max-width: 700px;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      text-align: center;
-      color: white;
-      animation: float 6s ease-in-out infinite;
-    }
+        .section {
+            background: white;
+            margin: 30px 0;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            border-left: 5px solid #1a1a1a;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-    h1 {
-      color: #00ffff;
-      margin-bottom: 20px;
-      animation: glowText 2s ease-in-out infinite alternate;
-    }
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
 
-    img {
-      border-radius: 50%;
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-      margin-bottom: 20px;
-      border: 3px solid #00ffff;
-      animation: rotateImage 20s linear infinite;
-    }
+        h2 {
+            color: #1a1a1a;
+            font-size: 2em;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-    p {
-      font-size: 1.2em;
-      line-height: 1.6;
-      color: #fff;
-    }
+        .section-number {
+            background: #1a1a1a;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
+        .intro-content {
+            background: #f8f8f8;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #1a1a1a;
+        }
 
-    @keyframes glowText {
-      from { text-shadow: 0 0 10px #00ffff; }
-      to { text-shadow: 0 0 20px #00ffff, 0 0 30px #00ffff; }
-    }
+        .intro-content h3 {
+            color: #1a1a1a;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
 
-    @keyframes rotateImage {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-  </style>
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            font-size: 1.05em;
+        }
+
+        ul li:before {
+            content: "▪";
+            position: absolute;
+            left: 0;
+            color: #1a1a1a;
+            font-size: 1.5em;
+            line-height: 1;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .skill-card {
+            background: #f8f8f8;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            border-color: #1a1a1a;
+            transform: translateY(-3px);
+        }
+
+        .skill-card h3 {
+            color: #1a1a1a;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .project-item {
+            background: #f8f8f8;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 4px solid #1a1a1a;
+        }
+
+        .project-item h3 {
+            color: #1a1a1a;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .project-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-image:hover {
+            transform: scale(1.05);
+            border-color: #1a1a1a;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
+            border-radius: 8px;
+            border: 2px dashed #999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 0.9em;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .upload-section {
+            background: #f8f8f8;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 2px solid #e0e0e0;
+        }
+
+        .upload-section h4 {
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+
+        .upload-section code {
+            background: #1a1a1a;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .highlight {
+            background: #1a1a1a;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-weight: 500;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            background: #f8f8f8;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: #1a1a1a;
+            color: white;
+            border-color: #1a1a1a;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+        }
+
+        .soft-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .soft-skill-tag {
+            background: #1a1a1a;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.95em;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .section {
+                padding: 25px;
+            }
+
+            .skills-grid, .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <div class="container">
+            <img src="m/335193070_2256070997905825_4943520371571441813_n.jpg" alt="Profile" class="profile-image">
+            <h1>นักศึกษา</h1>
+            <p class="subtitle">Information technology students | มหาลัยราชภัฏ อุดรธานี</p>
+            <div class="soft-skills" style="justify-content: center; margin-top: 30px;">
+                <span class="soft-skill-tag">การสื่อสาร</span>
+                <span class="soft-skill-tag">การทำงานเป็นทีม</span>
+                <span class="soft-skill-tag">การแก้ปัญหา</span>
+            </div>
+        </div>
+    </header>
 
-  <!-- ฟองน้ำลอย -->
-  <div class="bubbles">
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-  </div>
-
-  <!-- เนื้อหาหลัก -->
-  <div class="overlay">
     <div class="container">
-      <h1>สวัสดีครับ! ผมชื่อ TEE1505</h1>
-      <img src="507619686_23877486701893389_8403894263730468808_n.jpg" alt="รูปโปรไฟล์">
-      <p>
-        ผมเป็นคนที่สนใจในด้านเทคโนโลยี การเขียนโปรแกรม และการพัฒนาเว็บไซต์<br>
-        เวลาว่างผมชอบอ่านหนังสือ ฟังเพลง และเรียนรู้สิ่งใหม่ ๆ<br><br>
-        ความสามารถของผมรวมถึง HTML, CSS, JavaScript และการออกแบบ UX/UI<br>
-        เป้าหมายของผมคือการพัฒนาเว็บไซต์ที่ทั้งสวยงามและใช้งานง่ายครับ
-      </p>
-    </div>
-  </div>
+        <!-- Introduction -->
+        <section class="section">
+            <h2><span class="section-number">1</span> ส่วนแนะนำตัว</h2>
+            <div class="intro-content">
+                <h3>จุดประสงค์</h3>
+                <p style="font-size: 1.1em; margin-bottom: 20px;">การนำสารสนเทศที่ได้มาใช้เป็นพื้นฐานในการ ตัดสินใจ เรื่องต่างๆ อย่างมีหลักการและแม่นยำ</p>
+                
+                <h3>แนะนำตัว</h3>
+                <ul>
+                    <li>นายจักรณารายณ์ นามวิชัย / Jaknaray Namwichai</li>
+                    <li>คณะวิทยาศาสตร์ / มหาลัยราชภัฏ อุดรธานี / สาขา เทคโนโลยีสารสนเทศ</li>
+                    <li>ปีการศึกษา 2568 หรือสถานะ "นักศึกษาปี 2" </li>
+                    <li>ความสนใจเฉพาะทาง การเขียนโปรแกรม และ เกี่ยวกับระบบเคลื่อยข่าย</li>
+                </ul>
+                
+                
+            </div>
+        </section>
 
+        <!-- Skills -->
+        <section class="section">
+            <h2><span class="section-number">2</span> ทักษะ</h2>
+            <p class="highlight">ความสามารถต่างๆ</p>
+            
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>💻 Programming</h3>
+                    <ul>
+                        <li>Python</li>
+                        <li>Java</li>
+                        <li>HTML/CSS</li>
+                        <li>JavaScript</li>
+                        <li>SQL</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card">
+                    <h3> 📦 Design</h3>
+                    <ul>
+                        <li>แบบงาน</li>
+                        <li>ออกแบบสื่อ</li>
+                        <li>ออกแบบโครงร่างงาน</li>
+                        <li>ออกแบบรูปภาพ</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card">
+                    <h3>🛠️ Tools</h3>
+                    <ul>
+                        <li>Git</li>
+                        <li>VS Code</li>
+                        <li>SQL Server Management Studio 21</li>
+                        <li>Dev-C++</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section class="section">
+            <h2><span class="section-number">3</span> ผลงานที่ผ่านมา</h2>
+            <p class="highlight">จุดประสงค์: นำผลงานไปต่อยอดในอนาคต</p>
+            
+            <div class="project-item">
+                <h3>&#128196; เว็บไซต์ที่เคยพัฒนา</h3>
+                <p>ระบบจองห้องประชุมออนไลน์ (Web Project)</p>
+                <div class="project-images">
+                    <!-- แทนที่ src ด้วยลิงก์รูปของคุณ -->
+                    <img src="m/2.png" alt="Web Project Screenshot 1" class="project-image">
+                    <img src="m/581847210_1953024248877448_8490566914283348166_n.png" alt="Web Project Screenshot 2" class="project-image">
+                </div>
+            </div>
+            
+            <div class="project-item">
+                <h3>📚 การออกแบบผลงาน</h3>
+                <p>เป็นเกี่ยวกับการออกแบบผลงานสร้างสรรค์</p>
+                <div class="project-images">
+                    <!-- แทนที่ src ด้วยลิงก์รูปของคุณ -->
+                    <img src="m/4.jpg" alt="ML Project Result" class="project-image">
+                    <img src="m/5.jpg" alt="ML Code Notebook" class="project-image">
+                    <img src="m/8.jpg" alt="ML Code Notebook" class="project-image">
+                </div>
+            </div>
+            
+            <div class="project-item">
+                <h3>&#128202; งานถ่ายภาพ</h3>
+                <p>งานถ่ายภาพบรรยากาศทั้งหมด</p>
+                <div class="project-images">
+                    <!-- แทนที่ src ด้วยลิงก์รูปของคุณ -->
+                    <img src="m/6.png" alt="Power BI Dashboard" class="project-image">
+                    <img src="m/7.png" alt="Data Analysis Chart" class="project-image">
+                </div>
+            </div>
+
+           
+        </section>
+
+        <!-- Education -->
+        <section class="section">
+            <h2><span class="section-number">4</span> การศึกษา</h2>
+            <div class="project-item">
+                <h3>🎓 มหาลัยราชภัฏ อุดรธานี</h3>
+                <p><strong>คณะวิทยาศาสตร์ สาขาเทคโนโลยีสารสนเทศ</strong></p>
+                <p style="margin-top: 10px;">2568 - ปัจจุบัน</p>
+                <p style="margin-top: 5px; font-size: 0.95em; opacity: 0.8;">
+                 
+                </p>
+            </div>
+        </section>
+
+        <!-- Activities & Achievements -->
+        <section class="section">
+            <h2><span class="section-number">5</span> กิจกรรมและผลงานอื่น ๆ</h2>
+            <p class="highlight">เพื่อแสดงความสามารถรอบด้าน</p>
+            
+            <div class="project-item">
+                <h3>🏆 ผู้เข้าร่วมอบรม "กิจกรรมอมรมความมันคง"</h3>
+            </div>
+            
+            <div class="project-item">
+                <h3>💡 เข้าร่วมการแข่งขัน ROV </h3>
+            </div>
+            
+        </section>
+
+        <!-- Contact -->
+        <section class="section">
+            <h2><span class="section-number">6</span> ติดต่อ</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <h3>📧 Email</h3>
+                    <p>มหาวิทยาลัยหรือ Gmail</p>
+                </div>
+                <div class="contact-item">
+                    <h3>💼 GitHub</h3>
+                    <p>github.com/username</p>
+                </div>
+                <div class="contact-item">
+                    <h3>🔗 LinkedIn</h3>
+                    <p>linkedin.com/in/username</p>
+                </div>
+                <div class="contact-item">
+                    <h3>📘 Facebook</h3>
+                    <p>facebook.com/username</p>
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- Career Interest -->
+        <section class="section">
+            <h2><span class="section-number">7</span> องค์ประกอบเสริม</h2>
+            <div class="intro-content">
+                <h3>ข้อมูลการติดต่อ</h3>
+                <p style="font-size: 1.1em; margin-top: 15px;">
+                    Email : 67040233114@udru.ac.th
+                   
+                </p>
+                <p style="font-size: 1.1em; margin-top: 15px;">
+                    เบอร์ติดต่อ : 0999019673
+                </p>
+                <p style="font-size: 1.1em; margin-top: 15px;">
+                    facebook : Tee Tee
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Student Portfolio. All rights reserved.</p>
+            <p style="margin-top: 10px; opacity: 0.8;">Designed with passion for technology and innovation</p>
+        </div>
+    </footer>
 </body>
 </html>
